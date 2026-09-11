@@ -18,12 +18,14 @@ OUT = ROOT / "public" / "thumbnails"
 
 SOURCES = [
     # Case studies
+    ("kids-tracker", "case_studies/kids_tracker_case_study.pdf"),
     ("crypto-app", "case_studies/crypto_app.pdf"),
     ("e-learning", "case_studies/e_learning.pdf"),
     ("event-booking", "case_studies/event_booking.pdf"),
     ("cafeteria-pre-order", "case_studies/Cafeteria Pre-Order System.pdf"),
     ("temp-wifi", "case_studies/temp_wifi.pdf"),
     # Landing pages
+    ("costume-landing", "landing_page/costume_landing_page.pdf"),
     ("banner", "landing_page/banner.pdf"),
     ("beauty-landing", "landing_page/beauty_landing_page.pdf"),
     ("ai-landing", "landing_page/ai_landing_page.pdf"),
@@ -55,9 +57,20 @@ def main() -> None:
         page = doc.load_page(0)
         zoom = 1.25
         rect = page.rect
+        # Tall single-page case studies: crop a top band for card previews
+        clip = None
+        if rect.height > rect.width * 3:
+            clip = fitz.Rect(0, 0, rect.width, min(rect.width * 10 / 16, rect.height))
+            rect = clip
         while max(rect.width, rect.height) * zoom > MAX_SIDE and zoom > 0.4:
             zoom *= 0.85
-        pix = page.get_pixmap(matrix=fitz.Matrix(zoom, zoom), alpha=False)
+        pix = page.get_pixmap(matrix=fitz.Matrix(zoom, zoom), clip=clip, alpha=False)
+        # Skip blank/corrupt renders so hand-made covers are not overwritten
+        samples = pix.samples
+        if samples and all(b > 250 for b in samples[:: max(1, len(samples) // 500)]):
+            print(f"  !! blank render — keeping existing thumbnail for {slug}")
+            doc.close()
+            continue
         out_path = OUT / f"{slug}.jpg"
         pix.save(out_path.as_posix(), output="jpeg", jpg_quality=82)
         doc.close()

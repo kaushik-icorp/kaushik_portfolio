@@ -2,7 +2,7 @@ export const personal = {
   name: "Kaushik",
   roles: ["UX UI Designer", "Graphic Designer", "Front End Enthusiast"] as const,
   valueProposition:
-    "I design and build product interfaces for marketplaces and digital products from research and UI systems to production Next.js.",
+    "I design intuitive digital experiences and build interactive interfaces that combine user needs, thoughtful visual hierarchy, and clean front-end execution.",
   careerStartMonth: "2024-12-01",
   projectsCount: "20+",
   email: "kaushikchand04@gmail.com",

@@ -9,6 +9,7 @@ import {
   explorationProjects,
   type ExplorationFilter,
 } from "@/lib/data/projects";
+import { projectHref } from "@/lib/utils";
 import { AnimatePresence, LayoutGroup, motion } from "framer-motion";
 import Image from "next/image";
 import { useMemo, useState } from "react";
@@ -54,7 +55,7 @@ export function MoreExplorations() {
         <motion.div layout className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           <AnimatePresence mode="popLayout">
             {items.map((project) => {
-              const href = project.href ?? project.file;
+              const href = projectHref(project);
               const body = (
                 <>
                   <BrowserFrame title={project.title} className="shadow-none">

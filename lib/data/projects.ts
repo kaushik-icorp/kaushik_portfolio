@@ -24,6 +24,17 @@ function thumb(id: string) {
 /** Flagship case studies — Selected Work rows */
 export const flagshipProjects: Project[] = [
   {
+    id: "kids-tracker",
+    title: "Kids Tracker",
+    summary:
+      "Case study for a kids safety tracking app — parent peace of mind, live location flows, and clear mobile UI.",
+    tags: ["UX Research", "Product Design", "Mobile", "Case Study"],
+    category: "Case Studies",
+    file: "/case_studies/kids_tracker_case_study.pdf",
+    image: thumb("kids-tracker"),
+    featured: true,
+  },
+  {
     id: "crypto-app",
     title: "Crypto App",
     summary:
@@ -82,13 +93,23 @@ export const flagshipProjects: Project[] = [
 
 /** Additional Work — all PDF-backed projects from public folders */
 const explorationProjectsAll: Project[] = [
-  // Case studies (all 5)
+  // Case studies (kids tracker first, then remaining)
   ...flagshipProjects.map(({ featured, ...p }) => {
     void featured;
     return p;
   }),
 
-  // Landing pages (all 7)
+  // Landing pages (costume first, then remaining)
+  {
+    id: "costume-landing",
+    title: "Costume Landing Page",
+    summary:
+      "Fashion e-commerce landing with collage imagery, best-seller storytelling, and shop-focused CTAs.",
+    tags: ["Landing Page", "Fashion"],
+    category: "Landing Pages",
+    file: "/landing_page/costume_landing_page.pdf",
+    image: thumb("costume-landing"),
+  },
   {
     id: "banner",
     title: "Banner Landing Page",

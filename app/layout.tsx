@@ -18,12 +18,12 @@ const fraunces = Fraunces({
 export const metadata: Metadata = {
   title: "Kaushik — UX/UI Designer & Front-End Developer",
   description:
-    "Portfolio of Kaushik — UX/UI designer and front-end developer crafting product interfaces for marketplaces and digital products.",
+    "Portfolio of Kaushik — UX/UI designer and front-end developer crafting intuitive digital experiences and clean product interfaces.",
   metadataBase: new URL("https://kaushikchand.dev"),
   openGraph: {
     title: "Kaushik — UX/UI Designer & Front-End Developer",
     description:
-      "I design and build product interfaces for marketplaces and digital products from research and UI systems to production Next.js.",
+      "I design intuitive digital experiences and interactive interfaces that combine user needs, thoughtful visual hierarchy, and clean front-end execution.",
     type: "website",
     locale: "en_US",
   },
@@ -31,14 +31,17 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Kaushik — UX/UI Designer & Front-End Developer",
     description:
-      "I design and build product interfaces for marketplaces and digital products.",
+      "I design intuitive digital experiences and interactive interfaces with clean front-end execution.",
   },
   icons: {
     icon: [
-      { url: "/favicon.ico", sizes: "48x48" },
+      { url: "/favicon.ico", sizes: "any" },
       { url: "/icon.svg", type: "image/svg+xml" },
+      { url: "/icon-32.png", type: "image/png", sizes: "32x32" },
+      { url: "/icon-48.png", type: "image/png", sizes: "48x48" },
     ],
     apple: [{ url: "/apple-icon", sizes: "180x180", type: "image/png" }],
+    shortcut: "/favicon.ico",
   },
 };
 

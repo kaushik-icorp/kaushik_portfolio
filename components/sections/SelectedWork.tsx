@@ -5,7 +5,7 @@ import { BrowserFrame, ScreenshotPlaceholder } from "@/components/ui/BrowserFram
 import { Tag } from "@/components/ui/Chip";
 import { Container, Section, SectionHeading } from "@/components/layout/Section";
 import { flagshipProjects } from "@/lib/data/projects";
-import { cn } from "@/lib/utils";
+import { cn, projectHref } from "@/lib/utils";
 import { ArrowUpRight } from "lucide-react";
 import Image from "next/image";
 
@@ -24,7 +24,7 @@ export function SelectedWork() {
         <div className="mt-14 flex flex-col gap-20 lg:mt-20 lg:gap-28">
           {flagshipProjects.map((project, index) => {
             const reverse = index % 2 === 1;
-            const href = project.href ?? project.file;
+            const href = projectHref(project);
             return (
               <RevealStagger key={project.id}>
                 <article
